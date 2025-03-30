@@ -28,6 +28,17 @@ public class Flight {
         return this;
     }
 
+    // Getters
+    public String getFlightNumber() { return flightNumber; }
+    public String getAirline() { return airline; }
+    public String getAircraftModel() { return aircraftModel; }
+    public String getSrcAirport() { return srcAirport; }
+    public String getDestAirport() { return destAirport; }
+    public Date getDepartureTime() { return departureTime; }
+    public Date getArrivalTime() { return arrivalTime; }
+    public int getAvailableSeats() { return availableSeats; }
+    public double getPrice() { return price; }
+
     @Override
     public String toString() {
         return flightNumber + " from " + this.srcAirport + " to " + this.destAirport + " at " + departureTime;
