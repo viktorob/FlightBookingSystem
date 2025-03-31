@@ -1,18 +1,12 @@
-package solid;
-
-import org.junit.*:
 import org.junit.jupiter.api.BeforeEach;
-//import org.junit.jupiter.api.Test;
-
-Gradle: org.junit.jupiter:junit-jupiter:5.10.0
+import org.junit.jupiter.api.Test;
+import solid.Flight;
+import solid.FlightController;
 
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import static org.junit.Assert.*;
-import org.junit.jupiter.api.Assert;
+import static org.junit.jupiter.api.Assertions.*;;
 
 class FlightControllerTest {
 
@@ -24,8 +18,8 @@ class FlightControllerTest {
         flightController = new FlightController();
 
         // Creating actual Flight objects
-        flight1 = new Flight("AA123", "American Airlines", "Boeing 737",
-                "JFK", "LAX", new Date(1700000000000L), new Date(1700003600000L),
+        flight1 = new Flight("AA123", "Icelandair", "Boeing 737",
+                "KEF", "LAX", new Date(1700000000000L), new Date(1700003600000L),
                 150, 350.00, 200.5f);
 
         flight2 = new Flight("BA456", "British Airways", "Airbus A320",

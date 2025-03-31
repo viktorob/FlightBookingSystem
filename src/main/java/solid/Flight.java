@@ -17,6 +17,8 @@ public class Flight {
         this.flightNumber = flightNumber;
         this.airline = airline;
         this.aircraftModel = aircraftModel;
+        this.srcAirport = srcAirport;
+        this.destAirport = destAirport;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.availableSeats = availableSeats;
