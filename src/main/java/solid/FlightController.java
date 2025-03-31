@@ -1,19 +1,14 @@
 package solid;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class FlightController {
     private List<Flight> flights;
 
-    /**
-    public Flight searchFlight(String flightNumber) {
-        // leitar eftir flightNumber
-    }
-     */
 
     public FlightController() {
         this.flights = new ArrayList<>();
@@ -24,7 +19,7 @@ public class FlightController {
     }
 
     public List<Flight> searchFlights(String flightNumber, String srcAirport, String destAirport,
-                                      Date departureTime, Date arrivalTime, Double maxPrice) {
+                                      LocalDateTime departureTime, LocalDateTime arrivalTime, Double maxPrice) {
         return flights.stream()
                 .filter(f -> (flightNumber == null || f.getFlightNumber().equalsIgnoreCase(flightNumber)))
                 .filter(f -> (srcAirport == null || f.getSrcAirport().equalsIgnoreCase(srcAirport)))

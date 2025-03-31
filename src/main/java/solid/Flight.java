@@ -1,5 +1,5 @@
 package solid;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Flight {
     private String flightNumber;
@@ -7,20 +7,20 @@ public class Flight {
     private String aircraftModel;
     private String srcAirport;
     private String destAirport;
-    private Date departureTime;
-    private Date arrivalTime;
+    private LocalDateTime departureDateTime;
+    private LocalDateTime arrivalDateTime;
     private int availableSeats;
     private double price;
     private float co2Emissions;
 
-    public Flight(String flightNumber, String airline, String aircraftModel, String srcAirport, String destAirport, Date departureTime, Date arrivalTime, int availableSeats, double price, float co2Emissions) {
+    public Flight(String flightNumber, String airline, String aircraftModel, String srcAirport, String destAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int availableSeats, double price, float co2Emissions) {
         this.flightNumber = flightNumber;
         this.airline = airline;
         this.aircraftModel = aircraftModel;
         this.srcAirport = srcAirport;
         this.destAirport = destAirport;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
         this.availableSeats = availableSeats;
         this.price = price;
         this.co2Emissions = co2Emissions;
@@ -31,19 +31,20 @@ public class Flight {
     }
 
     // Getters
-    public String getFlightNumber() { return flightNumber; }
-    public String getAirline() { return airline; }
-    public String getAircraftModel() { return aircraftModel; }
-    public String getSrcAirport() { return srcAirport; }
-    public String getDestAirport() { return destAirport; }
-    public Date getDepartureTime() { return departureTime; }
-    public Date getArrivalTime() { return arrivalTime; }
-    public int getAvailableSeats() { return availableSeats; }
-    public double getPrice() { return price; }
+    public String getFlightNumber() { return this.flightNumber; }
+    public String getAirline() { return this.airline; }
+    public String getAircraftModel() { return this.aircraftModel; }
+    public String getSrcAirport() { return this.srcAirport; }
+    public String getDestAirport() { return this.destAirport; }
+    public LocalDateTime getDepartureTime() { return this.departureDateTime; }
+    public LocalDateTime getArrivalTime() { return this.arrivalDateTime; }
+    public int getAvailableSeats() { return this.availableSeats; }
+    public double getPrice() { return this.price; }
 
     @Override
     public String toString() {
-        return flightNumber + " from " + this.srcAirport + " to " + this.destAirport + " at " + departureTime;
+        return String.format("Flight %s (%s) from %s to %s at %s, ETA at %s. Price: $%.2f",
+                flightNumber, airline, srcAirport, destAirport, departureDateTime, arrivalDateTime, price);
     }
 
 }

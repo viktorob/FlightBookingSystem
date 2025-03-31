@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import solid.Flight;
 import solid.FlightController;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;;
@@ -17,20 +17,28 @@ class FlightControllerTest {
     void setUp() {
         flightController = new FlightController();
 
-        // Creating actual Flight objects
-        flight1 = new Flight("AA123", "Icelandair", "Boeing 737",
-                "KEF", "LAX", new Date(1700000000000L), new Date(1700003600000L),
+
+        // Mock Flight objects
+        flight1 = new Flight("IA123", "Icelandair", "Boeing 737",
+                "KEF", "LAX",
+                LocalDateTime.of(2025, 4, 15, 10, 30),  // April 15, 2025, 10:30 AM
+                LocalDateTime.of(2025, 4, 15, 14, 45),
                 150, 350.00, 200.5f);
 
         flight2 = new Flight("BA456", "British Airways", "Airbus A320",
-                "LHR", "JFK", new Date(1800000000000L), new Date(1800003600000L),
+                "LHR", "JFK",
+                LocalDateTime.of(2025, 7, 22, 8, 15),  // July 22, 2025, 8:15 AM
+                LocalDateTime.of(2025, 7, 22, 11, 50), // July 22, 2025, 11:50 AM,
                 180, 500.00, 220.0f);
 
         flight3 = new Flight("DL789", "Delta Airlines", "Boeing 777",
-                "ATL", "LAX", new Date(1750000000000L), new Date(1750003600000L),
+                "ATL", "LAX",
+                LocalDateTime.of(2025, 12, 5, 18, 0),  // December 5, 2025, 6:00 PM
+                LocalDateTime.of(2025, 12, 5, 21, 30), // December 5, 2025, 9:30 PM
                 200, 400.00, 250.0f);
 
-        // Adding flights to controller
+
+        // Add flights to controller
         flightController.addFlight(flight1);
         flightController.addFlight(flight2);
         flightController.addFlight(flight3);
@@ -38,17 +46,17 @@ class FlightControllerTest {
 
     @Test
     void testSearchFlightByNumber() {
-        List<Flight> result = flightController.searchFlights("AA123", null, null, null, null, null);
+        List<Flight> result = flightController.searchFlights("IA123", null, null, null, null, null);
         assertEquals(1, result.size());
-        assertEquals("AA123", result.get(0).getFlightNumber());
+        assertEquals("IA123", result.getFirst().getFlightNumber());
     }
 
     @Test
     void testSearchFlightByAirports() {
-        List<Flight> result = flightController.searchFlights(null, "JFK", "LAX", null, null, null);
+        List<Flight> result = flightController.searchFlights(null, "KEF", "LAX", null, null, null);
         assertEquals(1, result.size());
-        assertEquals("JFK", result.get(0).getSrcAirport());
-        assertEquals("LAX", result.get(0).getDestAirport());
+        assertEquals("KEF", result.getFirst().getSrcAirport());
+        assertEquals("LAX", result.getFirst().getDestAirport());
     }
 
     @Test
@@ -63,14 +71,14 @@ class FlightControllerTest {
     void testSortFlightsByDepartureTime() {
         List<Flight> sortedFlights = flightController.sortFlightsByDepartureTime();
         assertEquals(flight1, sortedFlights.get(0)); // Earliest flight first
-        assertEquals(flight3, sortedFlights.get(1));
-        assertEquals(flight2, sortedFlights.get(2)); // Latest flight last
+        assertEquals(flight2, sortedFlights.get(1));
+        assertEquals(flight3, sortedFlights.get(2)); // Latest flight last
     }
 
     @Test
     void testFilterByAirline() {
         List<Flight> result = flightController.filterByAirline("Delta Airlines");
         assertEquals(1, result.size());
-        assertEquals("DL789", result.get(0).getFlightNumber());
+        assertEquals("DL789", result.getFirst().getFlightNumber());
     }
 }
