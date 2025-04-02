@@ -46,14 +46,19 @@ class FlightControllerTest {
 
     @Test
     void testSearchFlightByNumber() {
-        List<Flight> result = flightController.searchFlights("IA123", null, null, null, null, null);
+        List<Flight> result = flightController.searchFlights("IA123", null, null, null, null, null, null);
         assertEquals(1, result.size());
         assertEquals("IA123", result.getFirst().getFlightNumber());
     }
 
+    void testSearchFlightByTravelerCount() {
+        List<Flight> result = flightController.searchFlights("IA123", null, null, null, null, 2, null);
+        assertEquals(3, result.size());
+    }
+
     @Test
     void testSearchFlightByAirports() {
-        List<Flight> result = flightController.searchFlights(null, "KEF", "LAX", null, null, null);
+        List<Flight> result = flightController.searchFlights(null, "KEF", "LAX", null, null, null, null);
         assertEquals(1, result.size());
         assertEquals("KEF", result.getFirst().getSrcAirport());
         assertEquals("LAX", result.getFirst().getDestAirport());

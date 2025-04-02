@@ -13,7 +13,9 @@ public class Flight {
     private double price;
     private float co2Emissions;
 
-    public Flight(String flightNumber, String airline, String aircraftModel, String srcAirport, String destAirport, LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int availableSeats, double price, float co2Emissions) {
+    public Flight(String flightNumber, String airline, String aircraftModel, String srcAirport, String destAirport,
+                  LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, int availableSeats, double price,
+                  float co2Emissions) {
         this.flightNumber = flightNumber;
         this.airline = airline;
         this.aircraftModel = aircraftModel;
@@ -26,9 +28,11 @@ public class Flight {
         this.co2Emissions = co2Emissions;
     }
 
+    /**
     public Flight getFlightDetails() {
-        return this;
+
     }
+     */
 
     // Getters
     public String getFlightNumber() { return this.flightNumber; }
@@ -40,11 +44,12 @@ public class Flight {
     public LocalDateTime getArrivalTime() { return this.arrivalDateTime; }
     public int getAvailableSeats() { return this.availableSeats; }
     public double getPrice() { return this.price; }
+    public float getCo2Emissions() { return this.co2Emissions; }
 
     @Override
     public String toString() {
-        return String.format("Flight %s (%s) from %s to %s at %s, ETA at %s. Price: $%.2f",
-                flightNumber, airline, srcAirport, destAirport, departureDateTime, arrivalDateTime, price);
+        return String.format("Flight %s (%s) from %s to %s at %s, ETA at %s, available seats: %d Price: $%.2f, CO2 emissions: %.2f",
+                this.flightNumber, this.airline, this.srcAirport, this.destAirport, this.departureDateTime,
+                this.arrivalDateTime, this.availableSeats, this.price, this.co2Emissions);
     }
-
 }
